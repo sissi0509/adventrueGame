@@ -1,0 +1,18 @@
+---
+:id: 324848038
+:submitters:
+- :name: Eunjin Lee
+  :email: lee.eunji@northeastern.edu
+- :name: Xi Zhao
+  :email: zhao.xi6@northeastern.edu
+- :name: Yue Zeng
+  :email: zeng.yue1@northeastern.edu
+- :name: Jian Gao
+  :email: gao.jian2@northeastern.edu
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2025-04-12 21:47:59.416622000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2025-04-12 14:47:59.416622000 Z
+:status: processed
+:score: 100.0

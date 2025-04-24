@@ -1,0 +1,35 @@
+A4
+take hair clippers
+inventory
+inventory
+n
+x thumb drive
+t thumb drive
+e chandelier
+s
+x billboard
+n
+l
+t modulo 2
+i
+e
+w
+n
+use hair clippers
+look
+drop hair clippers
+l
+t lamp
+l
+i
+e
+t key
+u modulo 2
+l
+use key
+d modulo 2
+e
+x desk
+use thumb drive
+save
+q

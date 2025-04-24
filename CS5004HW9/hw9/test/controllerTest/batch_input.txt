@@ -1,0 +1,5 @@
+A4
+take hair clippers
+inventory
+save
+q
