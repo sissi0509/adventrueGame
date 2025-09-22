@@ -1,22 +1,22 @@
-# Adventure Game — CS5004 HW9
+# Adventure Game Engine  
+*Java | MVC | JSON-Driven | GUI + Console*  
 
-A compact **Java adventure game engine** developed as a course project.  
-This repository demonstrates:  
+Developed as part of **CS5004: Object-Oriented Design**, this project demonstrates applied software engineering practices through a fully functional adventure game engine.
+
+This repository highlights:  
 - Object-oriented design and MVC architecture  
 - JSON-driven, data-oriented game world loading  
 - Multiple UI modes (console + graphical)  
 - Automated testing with JUnit  
-
-It is intended to serve as a clear **portfolio piece for internship applications**.  
-
 ---
 
 ## Table of Contents
 - [Project Summary](#project-summary)
-- [Screenshots & Videos](#screenshots--videos)
+- [Features](#features)
+- [Feature Showcase](#feature-showcase)
 - [Project Structure](#project-structure)   
-- [Quick Demo (Jar)](#quick-demo-jar)  
-- [Run from Source (Development)](#run-from-source-development)  
+- [Quick Demo (Jar)](#quick-demo-jar)
+- [Tech Stack](#tech-stack) 
 - [Architecture & Design](#architecture--design)  
 
 ---
@@ -29,23 +29,39 @@ Key responsibilities are separated into:
 - **Controller** — command parsing and game flow  
 - **View** — text view (`TextView`) and graphical view (`VisualView`)  
 
-This modular design makes the engine **extensible, testable, and easy to understand**.  
+This modular design makes the engine **extensible, testable, and easy to maintain**.
 
 ---
 
-## Screenshots & Videos  
+## Features  
+- **Inventory Management** – take, use, and drop items  
+- **Puzzle Interaction** – examine items and solve in-game puzzles  
+- **Persistence** – save and reload progress at any point  
+- **Multiple Modes**  
+  - Graphical (Swing GUI with images)  
+  - Text (console-based)  
+  - Batch (automated input from file)
 
-- **Console Mode**  
-  ![Text Mode Demo](assets/text_mode.gif)  
+---
 
+## Feature Showcase
 - **Graphical Mode**  
-  ![Graphical Mode Demo](assets/graphical_mode.gif)  
+  Take, use, and drop items:
+  ![take](https://github.com/user-attachments/assets/bec8bf47-b492-4eda-ae68-273323bd7a75)
+  ![use_drop](https://github.com/user-attachments/assets/5ef40571-da55-4fa3-9f02-d90b32f9f542)
+
+  Examine room items and solve puzzles:
+  ![answer](https://github.com/user-attachments/assets/2588b225-26fe-4e31-b880-86e908c96429)
+
+  Save and reload progress at any point:
+  ![save](https://github.com/user-attachments/assets/81a61664-4bc5-45ec-8d09-343a0245a40f)
+  ![reload](https://github.com/user-attachments/assets/93553f4f-2e94-4d3b-80fa-2ba5fc89377b)
+
+- **Text Mode**  
+  ![text](https://github.com/user-attachments/assets/d00d2f6d-a042-4662-8f79-060454481ae7)
 
 - **Batch Mode (Automated)**  
-  ![Batch Mode Demo](assets/batch_mode.gif)  
-
-*(GIFs/videos are stored in the `assets/` folder — keep each demo short for quick loading. For longer demos, consider linking to YouTube.)*  
-
+  ![batch](https://github.com/user-attachments/assets/79fda7b2-455b-46e6-a01d-b691dfa6764b)
 ---
 
 ## Project Structure  
@@ -59,11 +75,12 @@ hw9/
  │   │   ├─ gameModel/          # Core GameModel
  │   │   ├─ objects/            # Player, Room, Monster, Item, etc.
  │   │   └─ utilityClass/       # Command/action classes
- │   └─ view/                   # TextView & VisualView
+ │   ├─ view/                   # TextView & VisualView
+ │   └─ resources/              # JSON worlds + images
  │
- ├─ resources/                  # JSON worlds + images
  ├─ test/                       # JUnit tests
  └─ jar/CS5004HW9.jar           # Prebuilt demo jar
+
 ```  
 
 ---
@@ -71,47 +88,39 @@ hw9/
 ## Quick Demo (Jar)  
 
 **Prerequisite:** Java 11 or later  
-
 Run examples from the `jar/` folder:  
 
-**Text mode**  
+**Run in Text Mode**  
 ```bash
 cd CS5004HW9/hw9/jar
-java -jar CS5004HW9.jar ../src/resources/simple_hallway.json -text
-```  
-![Text Mode Example](assets/text_mode.gif)  
+java -jar CS5004HW9.jar <filename> -text
+```
 
-**Graphical mode**  
+**Run in Graphical Mode**  
 ```bash
 cd CS5004HW9/hw9/jar
-java -jar CS5004HW9.jar ../src/resources/museum.json -graphics
-```  
-![Graphical Mode Example](assets/graphical_mode.gif)  
+java -jar CS5004HW9.jar <filename> -graphics
+```
 
-**Batch mode** (commands from file)  
+**Run in Batch Mode**   
 ```bash
 cd CS5004HW9/hw9/jar
-java -jar CS5004HW9.jar ../src/resources/alignquest.json -batch ../test/controllerTest/batch_input.txt
-```  
-![Batch Mode Example](assets/batch_mode.gif)  
+java -jar CS5004HW9.jar <filename> -batch <source> 
+```
+---
+## Tech Stack  
+- Java 11  
+- Swing (GUI)  
+- Gson (JSON parsing)  
+- JUnit (testing)  
 
 ---
-
-## Run from Source (Development)  
-1. Open project in IntelliJ IDEA / Eclipse / VS Code with Java.  
-2. Add dependencies:  
-   - `gson-2.10.1.jar` (JSON parsing)  
-   - `junit` & `mockito-core-5.11.0.jar` (testing)  
-   - or equivalent Maven/Gradle coordinates.  
-3. Run `GameEngineApp` with a JSON file + mode flag (see examples).  
-
----
-
 ## Architecture & Design  
 - **MVC-inspired separation**  
   - `model` — domain logic  
   - `view` — rendering (console + GUI)  
   - `controller` — mediates input/output  
 - **Data-driven worlds** — all content in `resources/*.json`, editable without touching code.  
-- **Command/action system** — small, focused classes (Move, Look, TakeItem, Use, Attack, Save, etc.) that manipulate the model.  
-- **Graphical mode** — image support via `VisualView`; JSON data classes include optional `picture` fields.  
+- **Command/action system** — modular classes for actions (Move, Look, TakeItem, Save, etc.)  
+- **Graphical mode** – supports optional image fields in JSON for GUI rendering.
+- **Testing** – JUnit coverage for core components  
